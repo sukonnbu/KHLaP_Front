@@ -2,6 +2,11 @@
 
 import WriteThread from "../../../components/WriteThread";
 
+export function generateStaticParmas() {
+    const pages = ['write'];
+    return pages.map((page) => {{name: page}})
+}
+
 export default function FreeThread({params: {id}}){
     if (id==="write") {
         /**글 작성하는 페이지 */
