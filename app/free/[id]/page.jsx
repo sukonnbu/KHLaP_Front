@@ -2,9 +2,8 @@
 
 import WriteThread from "../../../components/WriteThread";
 
-export function generateStaticParmas() {
-    const pages = ['write'];
-    return pages.map((page) => {{name: page}})
+export async function generateStaticParmas() {
+    return {params: {id: 'write'}}
 }
 
 export default function FreeThread({params: {id}}){
