@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default async function Freeboard({ id }) {
   const fetchThread = async () => {
-    const res = await fetch(process.env.API_URL + "/freeboard/" + id, {
+    const res = await fetch(`${process.env.API_URL}/freeboard/${id}/`, {
       cache: "force-cache",
     });
 

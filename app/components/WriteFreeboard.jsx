@@ -37,7 +37,6 @@ export default function WriteFreeboard() {
       );
     const date = new Date();
     updated_at = `${date.getMonth() + 1}/${date.getDate().toString().padStart(2, "0")} ${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
-    console.log(`${process.env.API_URL}/freeboard/`);
     const response = await fetch(`${process.env.API_URL}/freeboard/`, {
       method: "POST",
       headers: {

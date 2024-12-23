@@ -8,12 +8,9 @@ export default function Free() {
   const [threads, setThreads] = useState([]);
   useEffect(() => {
     const fetchThreads = async () => {
-      const res = await fetch(
-        "https://port-0-fastapi-khlap-m50sl11b53031885.sel4.cloudtype.app/freeboard",
-        {
-          cache: "force-cache",
-        },
-      ).then((res) => res.json());
+      const res = await fetch(`${process.env.API_URL}/freeboard/`, {
+        cache: "force-cache",
+      }).then((res) => res.json());
       const data = res.data[0];
 
       const _threads = [];
