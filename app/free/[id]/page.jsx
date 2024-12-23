@@ -1,24 +1,19 @@
-"use client";
+import Freeboard from "@app/components/Freeboard";
+import WriteFreeboard from "@app/components/WriteFreeboard";
 
-import WriteThread from "../../../components/WriteThread";
+export default async function FreeThread({ params }) {
+  const { id } = await params;
 
-export async function generateStaticParmas() {
-    return {params: {id: 'write'}}
-}
-
-export default function FreeThread({params: {id}}){
-    if (id==="write") {
-        /**글 작성하는 페이지 */
-        return <div className="container-fluid">
-            <WriteThread
-                titleHolder="제목을 입력하세요"
-                textHolder="본문을 입력하세요"
-            />
-        </div>
-    } else {
-        /**글 보는 페이지 */
-        return <div>
-            <h1>Thread: {id}</h1>
-        </div>
-    }
+  if (id === "write") {
+    return (
+      <div className="container-fluid">
+        <WriteFreeboard
+          titleHolder="제목을 입력하세요"
+          textHolder="본문을 입력하세요"
+        />
+      </div>
+    );
+  } else {
+    return <Freeboard id={id} />;
+  }
 }

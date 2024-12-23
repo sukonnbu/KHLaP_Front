@@ -1,7 +1,6 @@
-/**@type {import('next').NextConfig} */
-const nextConfig = {
-    reactStrictMode: true,
-    basePath: "/KHLaP_Front"
-}
-
-module.exports = nextConfig;
+module.exports = {
+  reactStrictMode: true,
+  env: {
+    API_URL: process.env.API_URL,
+  },
+};

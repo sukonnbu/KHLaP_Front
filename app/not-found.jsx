@@ -1,7 +1,7 @@
 export const metadata = {
-    title: "Not found"
+  title: "Not found",
 };
 
-export default function NotFound(){
-    return <h1>Not found!</h1>
-};
+export default function NotFound() {
+  return <h1>Page Not found!</h1>;
+}
