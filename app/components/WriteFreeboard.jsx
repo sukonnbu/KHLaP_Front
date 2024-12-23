@@ -48,6 +48,7 @@ export default function WriteFreeboard() {
         username: userName,
         image: image_base64,
         updated_at: updated_at,
+        comments: [],
       }),
     });
 

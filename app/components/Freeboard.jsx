@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WriteComment from "@app/components/WriteComment";
 
 export default async function Freeboard({ id }) {
   const fetchThread = async () => {
@@ -16,7 +17,10 @@ export default async function Freeboard({ id }) {
     <article>
       <header>
         <h1>{thread["title"]}</h1>
-        <small>{thread["username"]}</small>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <small>{thread["username"]}</small>
+          <small>{thread["updated_at"]}</small>
+        </div>
       </header>
       {thread["image"] !== "" && (
         <Image
@@ -24,13 +28,13 @@ export default async function Freeboard({ id }) {
           width={0}
           height={0}
           alt={`image${thread["title"]}`}
-          objectFit={"contain"}
           style={{ width: "90vw" }}
         />
       )}
       <p>{thread["content"]}</p>
       <footer>
         <h4>댓글</h4>
+        <WriteComment thread={thread} />
         <table className="striped">
           <tbody>
             {thread["comments"] !== undefined &&

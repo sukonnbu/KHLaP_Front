@@ -5,10 +5,7 @@ export default function FreeThread({ params: { id } }) {
   if (id === "write") {
     return (
       <div className="container-fluid">
-        <WriteFreeboard
-          titleHolder="제목을 입력하세요"
-          textHolder="본문을 입력하세요"
-        />
+        <WriteFreeboard />
       </div>
     );
   } else {
