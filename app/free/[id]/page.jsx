@@ -1,15 +1,7 @@
 import Freeboard from "@app/components/Freeboard";
 import WriteFreeboard from "@app/components/WriteFreeboard";
 
-export async function generateStaticParams() {
-  const threads = await fetch(`${process.env.API_URL}/freeborad/`, {cache: "force-cache"}).then(res => res.json());
-
-  return threads.map((thread) => ({
-    id: thread["id"]
-  }));
-}
-
-export default async function FreeThread({ params }) {
+export default function FreeThread({ params }) {
   const { id } = params;
 
   if (id === "write") {

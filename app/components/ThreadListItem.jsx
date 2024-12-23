@@ -6,6 +6,7 @@ export default function ThreadListItem({ thread, index }) {
   const date = new Date();
   let updated_at;
   if (
+    thread["updated_at"] !== null &&
     thread["updated_at"].includes(
       `${date.getMonth() + 1}/${date.getDate().toString().padStart(2, "0")}`,
     )

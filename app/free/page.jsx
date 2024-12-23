@@ -1,23 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import ThreadListItem from "@app/components/ThreadListItem";
+import React, { useEffect, useState } from "react";
 
-export default async function Free() {
-  const fetchThreads = async () => {
-    const res = await fetch(process.env.API_URL + "/freeboard", {
-      cache: "force-cache",
-    });
-    const res_json = await res.json();
+export default function Free() {
+  const [threads, setThreads] = useState([]);
+  useEffect(() => {
+    const fetchThreads = async () => {
+      const res = await fetch(`${process.env.API_URL}/freeboard`, {
+        cache: "force-cache",
+      }).then((res) => res.json());
+      const data = res.data[0];
 
-    return res_json.data[0];
-  };
+      const _threads = [];
+      data.forEach((thread) => {
+        _threads.push(thread);
+      });
+      _threads.reverse();
 
-  const threads = [];
-  const threads_obj = await fetchThreads();
-  threads_obj.forEach((thread) => {
-    threads.push(thread);
-  });
-  threads.reverse();
-
+      setThreads(_threads);
+    };
+    fetchThreads();
+  }, []);
   return (
     <>
       <nav>
