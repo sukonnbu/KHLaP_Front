@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import LION from "public/lion.svg";
-import PANDA from "public/panda.svg";
+import LION from "public/lion.ico";
+import PANDA from "public/panda.ico";
 import MENU from "public/menu.svg";
 import { useEffect, useState } from "react";
 import Image from "next/image";
