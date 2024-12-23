@@ -49,13 +49,14 @@ export default function Free() {
           </tr>
         </thead>
         <tbody>
-          {threads.map((thread, i) => (
-            <ThreadListItem
-              key={thread["id"]}
-              index={threads.length - i}
-              thread={thread}
-            />
-          ))}
+          {threads !== [] &&
+            threads.map((thread, i) => (
+              <ThreadListItem
+                key={thread["id"]}
+                index={threads.length - i}
+                thread={thread}
+              />
+            ))}
         </tbody>
       </table>
     </>
