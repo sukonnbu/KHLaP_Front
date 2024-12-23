@@ -1,14 +1,6 @@
 import Freeboard from "@app/components/Freeboard";
 import WriteFreeboard from "@app/components/WriteFreeboard";
 
-export async function generateStaticParams() {
-  const ids = await fetchIds();
-
-  return ids.map(id => ({
-    id: id.toString(),
-  }));
-}
-
 export default async function FreeThread({ params }) {
   const { id } = params;
 
