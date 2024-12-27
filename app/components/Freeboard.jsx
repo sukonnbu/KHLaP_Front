@@ -1,7 +1,9 @@
 import Image from "next/image";
 import WriteComment from "@app/components/WriteComment";
+import Comment from "@app/components/Comment";
 
-export default async function Freeboard({ id }) {
+export default async function Freeboard(params) {
+  const { id } = params;
   const fetchThread = async () => {
     const res = await fetch(`${process.env.API_URL}/freeboard/${id}/`, {
       cache: "reload",
@@ -12,7 +14,6 @@ export default async function Freeboard({ id }) {
     return res_json.data[0];
   };
   const thread = await fetchThread();
-
   return (
     <article>
       <header>
@@ -34,17 +35,13 @@ export default async function Freeboard({ id }) {
       <p>{thread["content"]}</p>
       <footer>
         <h4>댓글</h4>
-        <WriteComment thread={thread} />
+        <WriteComment thread={thread} board="free" />
         <table className="striped">
           <tbody>
             {thread["comments"] !== undefined &&
-              thread["comments"].map((comment) => (
-                <tr>
-                  <th>{comment["username"]}</th>
-                  <th>{comment["content"]}</th>
-                  <th>{comment["updated_at"]}</th>
-                </tr>
-              ))}
+              thread["comments"].map((comment) => {
+                return <Comment key={comment["updated_at"]} {...comment} />;
+              })}
           </tbody>
         </table>
       </footer>

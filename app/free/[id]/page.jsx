@@ -1,7 +1,8 @@
 import Freeboard from "@app/components/Freeboard";
 import WriteFreeboard from "@app/components/WriteFreeboard";
 
-export default function FreeThread({ params: { id } }) {
+export default async function FreeThread({ params }) {
+  const { id } = await params;
   if (id === "write") {
     return (
       <div className="container-fluid">

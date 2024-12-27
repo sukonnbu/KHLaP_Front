@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function WriteComment({ thread }) {
+export default function WriteComment({ thread, board }) {
   const router = useRouter();
   const [userName, setUserName] = useState("");
   const [content, setContent] = useState("");
@@ -20,25 +20,42 @@ export default function WriteComment({ thread }) {
     const comments = thread["comments"] !== undefined ? thread["comments"] : [];
     comments.push(comment);
 
-    const response = await fetch(
-      `${process.env.API_URL}/freeboard/${thread["id"]}/`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title: thread["title"],
-          content: thread["content"],
-          username: thread["username"],
-          image: thread["image"],
-          updated_at: thread["updated_at"],
-          comments: comments,
-        }),
-      },
-    );
-
-    router.push(`/free/${thread["id"]}/`);
+    const response =
+      board === "free"
+        ? await fetch(`${process.env.API_URL}/freeboard/${thread["id"]}/`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: thread["title"],
+              content: thread["content"],
+              username: thread["username"],
+              image: thread["image"],
+              updated_at: thread["updated_at"],
+              comments: comments,
+            }),
+          })
+        : await fetch(`${process.env.API_URL}/used/${thread["id"]}/`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              title: thread["title"],
+              itemname: thread["itemname"],
+              sold: thread["sold"],
+              price: thread["price"],
+              username: thread["username"],
+              image: thread["image"],
+              updated_at: thread["updated_at"],
+              others: thread["others"],
+              comments: comments,
+            }),
+          });
+    setUserName("");
+    setContent("");
+    router.push(`/used/${thread["id"]}/`);
   };
 
   return (

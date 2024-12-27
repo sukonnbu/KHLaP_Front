@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function ThreadListItem({ thread, index }) {
+export default function FreeThreadListItem({ thread, index }) {
   const date = new Date();
   let updated_at;
   if (

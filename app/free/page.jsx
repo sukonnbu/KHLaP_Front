@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import ThreadListItem from "@app/components/ThreadListItem";
+import FreeThreadListItem from "@app/components/FreeThreadListItem";
 import React, { useEffect, useState } from "react";
 
 export default function Free() {
@@ -39,26 +39,29 @@ export default function Free() {
           </li>
         </ul>
       </nav>
-      <table className="striped">
-        <thead>
-          <tr>
-            <th scope="row">글</th>
-            <th scope="row">제목</th>
-            <th scope="row">작성자</th>
-            <th scope="row">작성일시</th>
-          </tr>
-        </thead>
-        <tbody>
-          {threads !== [] &&
-            threads.map((thread, i) => (
-              <ThreadListItem
+      {threads === [] ? (
+        <progress />
+      ) : (
+        <table className="striped">
+          <thead>
+            <tr>
+              <th scope="row">글</th>
+              <th scope="row">제목</th>
+              <th scope="row">작성자</th>
+              <th scope="row">작성일시</th>
+            </tr>
+          </thead>
+          <tbody>
+            {threads.map((thread, i) => (
+              <FreeThreadListItem
                 key={thread["id"]}
                 index={threads.length - i}
                 thread={thread}
               />
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      )}
     </>
   );
 }
