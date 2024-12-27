@@ -12,6 +12,7 @@ export default function SellUsedItem() {
   const [others, setOthers] = useState("");
   const [itemName, setItemName] = useState("");
   const [userName, setUserName] = useState("");
+  const [pw, setPwd] = useState("");
   let updated_at;
 
   function handleClick() {
@@ -53,11 +54,12 @@ export default function SellUsedItem() {
         others: others,
         sold: false,
         updated_at: updated_at,
+        password: pw,
         comments: [],
       }),
     });
 
-    router.push("/free/");
+    router.push("/used/");
   }
 
   return (
@@ -84,12 +86,20 @@ export default function SellUsedItem() {
               onChange={handleChange}
             />
           </label>
-          <input
-            type="text"
-            name="username"
-            placeholder="닉네임"
-            onChange={(event) => setUserName(event.target.value)}
-          />
+          <fieldset role="group">
+            <input
+              type="text"
+              name="username"
+              placeholder="닉네임"
+              onChange={(event) => setUserName(event.target.value)}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="거래 종료 비밀번호"
+              onChange={(event) => setPwd(event.target.value)}
+            />
+          </fieldset>
         </fieldset>
         <input
           type="text"
@@ -97,12 +107,24 @@ export default function SellUsedItem() {
           placeholder="제목"
           onChange={(event) => setTitle(event.target.value)}
         />
-        <input
-          type="text"
-          name="itemname"
-          placeholder="상품명"
-          onChange={(event) => setItemName(event.target.value)}
-        />
+        <fieldset role="group">
+          <input
+            type="text"
+            name="itemname"
+            placeholder="상품명"
+            onChange={(event) => setItemName(event.target.value)}
+          />
+          <input
+            type="text"
+            name="price"
+            placeholder="가격"
+            onChange={(event) => {
+              try {
+                setPrice(parseInt(event.target.value));
+              } catch (e) {}
+            }}
+          />
+        </fieldset>
         <textarea
           name="others"
           placeholder="기타 | 줄바꿈으로 구분"

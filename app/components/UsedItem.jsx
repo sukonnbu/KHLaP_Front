@@ -12,12 +12,28 @@ export default async function UsedItem(params) {
     return res_json.data[0];
   };
 
+  const sold_out = async () => {
+    thread["sold"] = true;
+    let pw = prompt("거래 종료 비밀번호: ", "");
+    if (pw !== thread["password"]) return;
+    const res = await fetch(`${process.env.API_URL}/used/${id}/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(thread),
+    });
+  };
+
   const thread = await fetchThread();
 
   return (
     <article>
       <header>
-        <h1>{thread["title"]}</h1>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h1>{thread["title"]}</h1>
+          <button onClick={() => {}}>거래 종료</button>
+        </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <small>{thread["username"]}</small>
           <small>{thread["updated_at"]}</small>

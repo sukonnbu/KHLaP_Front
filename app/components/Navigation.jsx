@@ -48,11 +48,6 @@ export default function Navigation() {
               <b>중고장터</b>
             </Link>
           </li>
-          <li>
-            <Link href="/study">
-              <b>공부방</b>
-            </Link>
-          </li>
           {/*<li>*/}
           {/*  <details className="dropdown">*/}
           {/*    <summary role="button">내 정보</summary>*/}
@@ -78,9 +73,6 @@ export default function Navigation() {
                 </li>
                 <li>
                   <Link href="/used">중고장터</Link>
-                </li>
-                <li>
-                  <Link href="/study">공부방</Link>
                 </li>
               </ul>
             </nav>
