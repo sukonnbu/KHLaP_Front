@@ -59,7 +59,7 @@ export default function SellUsedItem() {
       }),
     });
 
-    router.push("/used/");
+    router.push("used/");
   }
 
   return (

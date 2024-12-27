@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import UsedThreadListItem from "@app/components/UsedThreadListItem";
-import FreeThreadListItem from "@app/components/FreeThreadListItem";
 
 export default function Used() {
   const [threads, setThreads] = useState([]);
