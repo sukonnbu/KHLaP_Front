@@ -9,9 +9,9 @@ export default function Used() {
   const [threads, setThreads] = useState([]);
   useEffect(() => {
     const fetchThreads = async () => {
-      const res = await fetch(`${process.env.API_URL}/used/`, {
-        cache: "reload",
-      }).then((res) => res.json());
+      const res = await fetch(`${process.env.API_URL}/used/`).then((res) =>
+        res.json(),
+      );
       const data = res.data[0];
 
       const _threads = [];

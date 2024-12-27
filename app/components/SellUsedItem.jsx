@@ -51,7 +51,7 @@ export default function SellUsedItem() {
         image: image_base64,
         price: price,
         others: others,
-        sold: False,
+        sold: false,
         updated_at: updated_at,
         comments: [],
       }),

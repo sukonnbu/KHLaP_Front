@@ -5,9 +5,7 @@ import Comment from "@app/components/Comment";
 export default async function Freeboard(params) {
   const { id } = params;
   const fetchThread = async () => {
-    const res = await fetch(`${process.env.API_URL}/freeboard/${id}/`, {
-      cache: "reload",
-    });
+    const res = await fetch(`${process.env.API_URL}/freeboard/${id}/`);
 
     const res_json = await res.json();
 
