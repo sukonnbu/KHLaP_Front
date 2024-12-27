@@ -32,7 +32,7 @@ export default async function UsedItem(params) {
       <header>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <h1>{thread["title"]}</h1>
-          <button onClick={() => {}}>거래 종료</button>
+          <button>거래 종료</button>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <small>{thread["username"]}</small>
